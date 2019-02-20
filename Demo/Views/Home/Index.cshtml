@@ -1,0 +1,64 @@
+﻿@model Demo.Models.ClienteViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+
+@if (ViewBag.Sucesso != null && ViewBag.Sucesso == 1)
+{
+    <div class="alert-success" role="alert">
+        Conta Cadastrada com Sucesso
+    </div>
+}
+
+@using (Html.BeginForm("Salvar", "Home"))
+{
+
+    <div class="form-group">
+        <label for="inputCPF">CPF</label>
+        @Html.TextBoxFor(x => x.Cpf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Cpf)
+    </div>
+
+    <div class="form-group">
+        <label for="inputNome">Nome</label>
+        @Html.TextBoxFor(x => x.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Nome)
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="inputAgencia">Numero Agencia</label>
+        @Html.TextBoxFor(x => x.Agencia, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Agencia)
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="inputConta">Numero Conta</label>
+        @Html.TextBoxFor(x => x.Conta, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Conta)
+    </div>
+
+
+    <div class="form-group">
+        <label for="exampleInputFile">Estado</label>
+        @Html.DropDownListFor(x => x.Estado, new List<SelectListItem>()
+        {
+          new SelectListItem() {Text = "Rio de Janeiro", Value ="RJ"},
+          new SelectListItem() {Text = "São Paulo", Value ="SP"},
+          new SelectListItem() {Text = "Minas Gerais", Value ="MG"},
+
+        }, "Selecione", new {@class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Estado)
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+}
